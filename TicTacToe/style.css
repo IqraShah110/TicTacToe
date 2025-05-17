@@ -1,0 +1,51 @@
+.container{
+  border: 1px solid green;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.game{
+  width: 80vmin;
+  display: flex;
+flex-wrap: wrap;
+text-align: center;
+align-items: center;
+justify-content: center;
+
+  
+}
+
+.box{
+  width: 20vmin;
+  height: 20vmin;
+  border: 1px solid gray;
+  margin: 1vmin;
+  font-size: 15vmin;
+  background-color: #567469;
+  color: white;
+  border-radius: 20%;
+      
+}
+
+h2{
+  width: 100%;
+border: 2px solid green;
+text-align: center;
+font-size: 8vmin;
+}
+
+.reset-btn{
+width: 14%;
+  border-radius:20px;
+  font-size: 34px;
+  background-color: black;
+  color: white;
+  margin-top: 30px;
+  padding: 12px;
+}
+
+#msg{
+
+  font-size: 40px;
+}

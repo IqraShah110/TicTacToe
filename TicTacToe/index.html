@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Tic Tac Toe</h2>
+      <p id="msg"></p>
+     <div class="game">
+ 
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+
+      <button class="reset-btn">Reset Game</button>
+    
+    </div>
+
+    <script>
+      let boxes = document.querySelectorAll(".box");
+     let resetBtn = document.querySelector(".reset-btn");
+      let msg=document.querySelector("#msg");
+
+      let winningPattern = [
+        [0, 1, 2],
+        [0, 3, 6],
+        [0, 4, 8],
+        [1, 4, 7],
+        [2, 4, 6],
+        [2, 5, 8],
+        [3, 4, 5],
+        [6, 7, 8],
+      ];
+
+
+      let turn0=true;
+      let gameOver=false;
+
+      resetBtn.addEventListener("click",()=>{
+        turn0=true;
+        gameOver=false;
+        boxes.forEach(box=>{
+          box.innerText="";
+        })
+      })
+      
+
+    boxes.forEach(box=>{
+
+      box.addEventListener("click",()=>{
+
+        if(gameOver) return;  //   dont allow boxes to click once game is over
+        if (box.innerText !== "") return;   //   dont allow boxes to again edit text 
+        
+        if(turn0){
+          box.innerText="X";
+          turn0=false;
+          box.disabled = true;
+         
+        }else{
+          box.innerText="O";
+          turn0=true;
+          
+        }
+        checkWinner();
+     
+      })
+    })
+
+    const checkWinner=()=>{
+
+    for(pattern of winningPattern){
+      let val1=boxes[pattern[0]].innerText;
+        let val2=boxes[pattern[1]].innerText;
+        let val3=boxes[pattern[2]].innerText;
+
+        if(val1!="" && val2!=""&& val3!=""){
+
+     if(val1===val2 && val2===val3){
+      msg.innerText=`Congratulations ! The winner is ${val1}`
+      gameOver=true;        // all boxes would be disable to edit 
+
+     }   
+     
+    }
+    
+  }
+}
+
+    </script>
+  </body>
+</html>
